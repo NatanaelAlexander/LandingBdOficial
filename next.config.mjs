@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // Configuración general de Next.js
+    experimental: {
+        runtime: 'nodejs',
+      },
   };
   
   export default nextConfig;

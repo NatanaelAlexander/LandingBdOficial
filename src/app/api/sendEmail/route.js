@@ -1,5 +1,5 @@
 import { Resend } from 'resend';
-export const runtime = 'edge';
+
 const resend = new Resend(process.env.RESEND_NEW_API);
 
 export async function POST(request) {

@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import bcrypt from 'bcryptjs';
 import { createClient } from "@libsql/client";
-
+export const runtime = 'edge';
 const client = createClient({
     url: process.env.TURSO_BASE_URL,
     authToken: process.env.TURSO_TOKEN_KEY

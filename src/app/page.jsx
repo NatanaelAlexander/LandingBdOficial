@@ -2,7 +2,7 @@ import Header from "../components/home/Header";
 import Servicios from "../components/home/Servicios";
 import Contactanos from "../components/home/Contactanos";
 import PreguntasFrecuentes from "../components/home/PreguntasFrecuentes";
-
+export const runtime = 'edge'
 export const metadata = {
   title: "NyAsociados",
   description: "Creación de paginas web, contabilidad y Excel",

@@ -79,7 +79,7 @@ export default function Contactanos() {
         <section className="px-5 flex flex-col gap-[50px]">
             <article className="text-center">
                 <h2 className="text-white flex flex-col font-bold text-4xl md:text-6xl">
-                    Contáctanos oe zi
+                    Contáctanos
                     <span className="text-gray-500 text-lg font-normal md:font-medium pt-2">
                         Llena el formulario y nos pondremos en contacto contigo a la brevedad.
                     </span>

@@ -16,7 +16,7 @@ export default function Servicios() {
                         <p className="leading-snug font-medium md:font-normal text-gray-300 md:text-gray-500 group-hover:text-gray-400">{servicios.description}</p>
 
                         <ul className="flex flex-col gap-1 list-disc list-inside">
-                            {servicios.items.map((items) => (
+                            {servicios.items.map((items, itemIndex) => (
                                 <li className="font-semibold">{items.item}: <span className="text-gray-400 md:text-gray-500 font-medium md:font-normal">{items.descriptionItem}</span></li>
                             ))}
                         </ul>

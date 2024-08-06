@@ -9,7 +9,7 @@ export const metadata = {
   icons: {
     icon: '/logo_dark.png',
   },
-  keywords:["Landing"]
+  keywords:["Desarollo web","Creación de paginas web"]
 };
 
 export default function Home() {

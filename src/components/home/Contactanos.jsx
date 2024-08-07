@@ -138,6 +138,7 @@ export default function Contactanos() {
                 <div className="flex flex-col md:col-span-2">
                     <label className="text-white font-medium text-sm">Mensaje*</label>
                     <textarea
+                        placeholder='Ingresa tu requerimiento'
                         rows="5"
                         className="rounded-md p-1"
                         name="mensaje"

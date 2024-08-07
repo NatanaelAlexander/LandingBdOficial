@@ -25,6 +25,8 @@ export default function Contactanos() {
 
     const send = async (event) => {
         event.preventDefault(); // Evitar que la página se recargue
+        setButtonText('Enviando Correo');
+        setIsButtonDisabled(true);
         try {
             if (validation()) {
                 const response = await axios.post('/api/sendEmail', formData);
@@ -49,15 +51,12 @@ export default function Contactanos() {
                         servicio: '',
                         mensaje: ''
                     });
-
-                    // Cambiar el texto del botón, deshabilitarlo y cambiar su color
-                    setButtonText('Correo enviado');
-                    setIsButtonDisabled(true);
-
+                    setButtonText('Correo enviado exitosamente');
                     // Volver a habilitar el botón después de 10 segundos
                     setTimeout(() => {
-                        setButtonText('Enviar');
+                        console.log('Set Time out del form')
                         setIsButtonDisabled(false);
+                        setButtonText('Enviar');
                     }, 10000);
                 } else {
                     console.log('Error Form');
@@ -76,7 +75,8 @@ export default function Contactanos() {
     };
 
     return (
-        <section className="px-5 flex flex-col gap-[50px]">
+        <section className="px-5 flex flex-col gap-[50px] pb-5 md:pb-10">
+
             <article className="text-center">
                 <h2 className="text-white flex flex-col font-bold text-4xl md:text-6xl">
                     Contáctanos
@@ -90,6 +90,7 @@ export default function Contactanos() {
                 <div className="flex flex-col md:col-span-1">
                     <label className="text-white font-medium text-sm">Nombre*</label>
                     <input
+                        maxlength="25"
                         className="rounded-md h-8 p-1"
                         type="text"
                         name="nombre"
@@ -100,6 +101,7 @@ export default function Contactanos() {
                 <div className="flex flex-col md:col-span-1">
                     <label className="text-white font-medium text-sm">Correo*</label>
                     <input
+                        maxlength="40"
                         className="rounded-md h-8 p-1"
                         type="email"
                         name="correo"
@@ -110,8 +112,9 @@ export default function Contactanos() {
                 <div className="flex flex-col md:col-span-1">
                     <label className="text-white font-medium text-sm">Numero</label>
                     <input
-                        className="rounded-md h-8 p-1"
                         type="number"
+                        max="15"
+                        className="rounded-md h-8 p-1"
                         name="numero"
                         value={formData.numero}
                         onChange={handleChange}
@@ -143,14 +146,16 @@ export default function Contactanos() {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="md:col-span-2 flex justify-center">
+                <div className="md:col-span-2 flex justify-center items-center">
+
                     <button
                         type="submit"
-                        className={`text-white md:font-semibold border-2 transition-all hover:scale-105 rounded w-full md:w-96 py-1.5 px-4 ${isButtonDisabled ? 'bg-indigo-900' : 'bg-indigo-700 hover:bg-transparent hover:border-white hover:shadow-xl hover:shadow-white'}`}
+                        className={`text-white md:font-semibold border-2 transition-all hover:scale-105 rounded w-full md:w-96 py-1.5 px-4 ${isButtonDisabled ? 'bg-black font-bold' : 'bg-indigo-700 hover:bg-transparent hover:border-white hover:shadow-xl hover:shadow-white'}`}
                         disabled={isButtonDisabled}
                     >
                         {buttonText}
                     </button>
+
                 </div>
             </form>
         </section>

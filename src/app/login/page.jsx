@@ -1,16 +1,15 @@
-'use client'
-import { useEffect, useState } from "react"
+'use client';
+
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from 'next/navigation';
-
-export const runtime = 'edge'
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const router = useRouter();
     const [loading, setLoading] = useState(false);
-    const [message, setMessasge] = useState('');
+    const [message, setMessage] = useState('');
 
     useEffect(() => {
         const { square } = require('ldrs');
@@ -23,15 +22,15 @@ export default function Login() {
 
         try {
             const response = await axios.post('/api/login', { email, password });
-            setMessasge(response.data.message);
+            setMessage(response.data.message);
 
             if (response.status === 200) {
                 console.log('Login successful');
-                const token = response.data.token;
+                const token = await response.data.token;
                 localStorage.setItem('token', token);
                 setTimeout(() => {
                     setLoading(false);
-                    setMessasge('');
+                    setMessage('');
                     router.push('/adminPage');
                 }, 1000);
             }
@@ -39,7 +38,7 @@ export default function Login() {
         } catch (err) {
             setTimeout(() => {
                 setLoading(false);
-                setMessasge(err.response.data.message);
+                setMessage(err.response.data.message);
                 console.log('error del front: ', err);
             }, 1000);
         }
@@ -49,7 +48,8 @@ export default function Login() {
         <>
             <div className="flex h-screen flex-1 flex-col justify-center items-center px-6 py-12 lg:px-8">
                 {loading ? (
-                    <div>
+                    <div className="">
+                        {/* <span className="text-white font-bold text-5xl">Cargando...</span> */}
                         <l-square
                             size="35"
                             stroke="5"
@@ -89,7 +89,9 @@ export default function Login() {
 
                                 <div>
                                     <div className="flex items-center justify-between">
-                                        <label htmlFor="password" className="block text-sm font-medium leading-6 text-white">
+                                        <label
+                                            htmlFor="password"
+                                            className="block text-sm font-medium leading-6 text-white">
                                             Contraseña
                                         </label>
                                         <div className="text-sm">

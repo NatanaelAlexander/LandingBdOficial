@@ -1,54 +1,52 @@
-'use client'
-import { useState } from "react"
+'use client';
+
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from 'next/navigation';
 
-import { square } from 'ldrs'
-
-square.register()
-
-
-
 export default function Login() {
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const router = useRouter();
     const [loading, setLoading] = useState(false);
-    const [message, setMessasge] = useState('');
+    const [message, setMessage] = useState('');
+
+    useEffect(() => {
+        const { square } = require('ldrs');
+        square.register();
+    }, []);
 
     const handlesubmit = async (e) => {
         e.preventDefault();
-        setLoading(true)
+        setLoading(true);
 
         try {
-            const response = await axios.post('/api/login', { email, password })
-            setMessasge(response.data.message)
+            const response = await axios.post('/api/login', { email, password });
+            setMessage(response.data.message);
 
             if (response.status === 200) {
                 console.log('Login successful');
-                const token = await response.data.token
+                const token = await response.data.token;
                 localStorage.setItem('token', token);
                 setTimeout(() => {
-                    setLoading(false)
-                    setMessasge('');
+                    setLoading(false);
+                    setMessage('');
                     router.push('/adminPage');
                 }, 1000);
             }
 
         } catch (err) {
             setTimeout(() => {
-                setLoading(false)
-                setMessasge(err.response.data.message);
-                console.log('error del front: ', err)
+                setLoading(false);
+                setMessage(err.response.data.message);
+                console.log('error del front: ', err);
             }, 1000);
         }
-    }
+    };
 
     return (
         <>
             <div className="flex h-screen flex-1 flex-col justify-center items-center px-6 py-12 lg:px-8">
-                {/* mensaje de carga */}
                 {loading ? (
                     <div className="">
                         {/* <span className="text-white font-bold text-5xl">Cargando...</span> */}
@@ -63,16 +61,13 @@ export default function Login() {
                     </div>
                 ) : (
                     <div>
-                        {/* El login como tal*/}
                         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-
                             <h2 className="mt-10 text-center text-2xl md:text-5xl font-bold leading-9 tracking-tight text-white">
                                 Iniciar sesión
                             </h2>
                         </div>
 
                         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-
                             <form onSubmit={handlesubmit} method="POST" className="space-y-6">
                                 <div>
                                     <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">
@@ -131,8 +126,7 @@ export default function Login() {
                         </div>
                     </div>
                 )}
-
             </div>
         </>
-    )
+    );
 }

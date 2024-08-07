@@ -2,6 +2,8 @@ import jwt from "jsonwebtoken";
 import bcrypt from 'bcryptjs';
 import { createClient } from "@libsql/client";
 
+
+
 const client = createClient({
     url: process.env.TURSO_BASE_URL,
     authToken: process.env.TURSO_TOKEN_KEY
@@ -25,11 +27,14 @@ export async function POST(request) {
             args: [email]
         });
 
+        console.log('Query result:', rows);
+
         if (rows.length === 0) {
             return new Response(JSON.stringify({ message: 'Usuario no encontrado' }), { status: 404 });
         }
 
         const user = rows[0];
+
         const isPasswordValid = await bcrypt.compare(password, user.contrasena);
 
         if (isPasswordValid) {
@@ -39,6 +44,7 @@ export async function POST(request) {
             return new Response(JSON.stringify({ message: 'Contraseña incorrecta' }), { status: 401 });
         }
     } catch (err) {
+        console.log('Error del servidor:', err);
         return new Response(JSON.stringify({ message: 'Error interno del servidor' }), { status: 500 });
     }
 }

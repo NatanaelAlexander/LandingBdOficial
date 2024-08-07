@@ -90,7 +90,7 @@ export default function Contactanos() {
                 <div className="flex flex-col md:col-span-1">
                     <label className="text-white font-medium text-sm">Nombre*</label>
                     <input
-                        maxlength="25"
+                        maxLength="25"
                         className="rounded-md h-8 p-1"
                         type="text"
                         name="nombre"
@@ -101,7 +101,7 @@ export default function Contactanos() {
                 <div className="flex flex-col md:col-span-1">
                     <label className="text-white font-medium text-sm">Correo*</label>
                     <input
-                        maxlength="40"
+                        maxLength="40"
                         className="rounded-md h-8 p-1"
                         type="email"
                         name="correo"

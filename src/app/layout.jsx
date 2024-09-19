@@ -6,12 +6,12 @@ import Footer from "../components/global/Footer";
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body className="bg-zinc-900">
         <Navbar />
         {children}
         <div className="pt-[165px]">
-        <Footer />
+          <Footer />
         </div>
       </body>
     </html>

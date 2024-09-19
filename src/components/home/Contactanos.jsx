@@ -1,6 +1,7 @@
 'use client';
 import axios from 'axios';
 import { useState } from 'react';
+import { services } from '../../data/service';
 
 export default function Contactanos() {
     const [formData, setFormData] = useState({
@@ -130,9 +131,10 @@ export default function Contactanos() {
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset focus:ring-2 sm:text-sm sm:leading-6"
                     >
                         <option className="text-font-medium hover:bg-gray-200" value="nada">Seleccione un servicio</option>
-                        <option className="text-font-medium hover:bg-gray-200" value="Desarrollo Web">Desarrollo Web</option>
-                        <option className="text-font-medium hover:bg-gray-200" value="Contabilidad">Contabilidad</option>
-                        <option className="text-font-medium hover:bg-gray-200" value="Clases Excel">Clases Excel</option>
+
+                        {services.map((servicio, key) => (
+                            <option key={key} className="text-font-medium hover:bg-gray-200" value="Desarrollo Web">{servicio.nombreLargo} ({servicio.nombreCorto})</option>
+                        ))}
                     </select>
                 </div>
                 <div className="flex flex-col md:col-span-2">

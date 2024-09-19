@@ -1,0 +1,15 @@
+.splide__pagination {
+    counter-reset: pagination-num;
+    color: aqua;
+    display: flex;
+    gap: 26px;
+}
+
+.splide__pagination__page:before {
+    counter-increment: pagination-num;
+    content: counter(pagination-num);
+    background-color: black;
+    color: white;
+    font-size: larger;
+    padding: 0 10px;
+}

@@ -5,13 +5,13 @@ export default function Servicios() {
         <section className="flex p-10 flex-col gap-[165px] container mx-auto px-5">
 
             <article className="text-center">
-                <h2 className="text-white flex flex-col font-bold text-4xl md:text-6xl">Servicios <span className="text-gray-500 text-lg font-normal md:font-medium pt-2">Elige el servicio que más te convenga</span></h2>
+                <h2 className="text-gray-200 flex flex-col font-bold text-4xl md:text-6xl">Servicios <span className="text-gray-500 text-lg font-normal md:font-medium pt-2">Elige el servicio que más te convenga</span></h2>
             </article>
 
             <article className="grid md:grid-cols-2 lg:grid-cols-3 gap-14">
 
                 {serviciosMini.map((servicios) => (
-                    <div className="cursor-pointer hover:scale-[1.03] transition-all group text-white font-bold flex flex-col relative gap-5 rounded-lg bg-zinc-800 hover:bg-gradient-to-b from-zinc-700 px-6 py-8">
+                    <div className="cursor-pointer hover:scale-[1.03] transition-all group text-gray-200 font-bold flex flex-col relative gap-5 rounded-lg bg-zinc-800 hover:bg-gradient-to-b from-zinc-700 px-6 py-8">
                         <h3 className="text-xl md:text-2xl md:font-semibold">{servicios.tittle}</h3>
                         <p className="leading-snug font-medium md:font-normal text-gray-300 md:text-gray-500 group-hover:text-gray-400">{servicios.description}</p>
 

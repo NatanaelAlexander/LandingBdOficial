@@ -21,13 +21,13 @@ const Carousel = () => {
                         drag: 'free',
                         focus: 'center',
                         autoScroll: {
-                            speed: 2,
+                            speed: 1,
                         },
                         perPage: 2,  // Mostrar 3 elementos a la vez,
                         gap: '1rem',
                         autoplay: true,
                         focus: 'center',
-                        padding: '0%',
+                        padding: '2%',
                         trimSpace: false,
                         pagination: true,
                         breakpoints: {

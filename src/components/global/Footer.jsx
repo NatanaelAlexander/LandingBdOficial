@@ -18,7 +18,7 @@ export default function Footer() {
                 <p>Ayudamos a que tú y tu negocio crezcan</p>
             </div>
             <figure className="h-1 border-b-[0.5px] border-white"></figure>
-            <div className="text-center flex flex-col md:flex-row md:justify-between">
+            <div className="text-center flex flex-col items-center md:flex-row md:justify-between">
                 <p>© Natanael y Asociados 2024. Todos los derechos reservados.</p>
                 <p>+56 93303068 nyasociados@nyasociados.com</p>
             </div>

@@ -26,7 +26,7 @@ export default function Header() {
             </div>
 
             <div className="relative z-20 font-medium text-base text-gray-100 md:text-lg flex flex-row gap-5 md:gap-16">
-                <button className="bg-indigo-700 rounded-lg border-indigo-700 px-6 py-2 md:px-10 md:py-3 hover:scale-[1.02] transition-all border">Solicitar presupuesto</button>
+                <button className="bg-indigo-700 rounded-lg px-6 md:px-10 md:py-3 hover:scale-[1.02] transition-all border-2 border-indigo-600">Solicitar presupuesto</button>
             </div>
             <span className="absolute bottom-10 drop-shadow-xl">
                 <SlArrowDown className="h-8 w-8 text-gray-100 float" />

@@ -25,6 +25,7 @@ export default function Contactanos() {
     }
 
     const send = async (event) => {
+        console.log(formData)
         event.preventDefault(); // Evitar que la página se recargue
         setButtonText('Enviando Correo');
         setIsButtonDisabled(true);
@@ -45,30 +46,43 @@ export default function Contactanos() {
                     }
 
                     // Limpiar los campos del formulario
-                    setFormData({
-                        nombre: '',
-                        correo: '',
-                        numero: '',
-                        servicio: '',
-                        mensaje: ''
-                    });
-                    setButtonText('Correo enviado exitosamente');
+                    LimpiarFormulario('Enviar')
                     // Volver a habilitar el botón después de 10 segundos
-                    setTimeout(() => {
-                        console.log('Set Time out del form')
-                        setIsButtonDisabled(false);
-                        setButtonText('Enviar');
-                    }, 10000);
+                    habilitarBoton('Correo enviado exitosamente')
                 } else {
                     console.log('Error Form');
+                    setButtonText('Se ha producido un error');
                 }
             } else {
-                console.log('Datos Form invalidos')
+                console.log('Datos Form invalidos');
+                habilitarBoton('Datos incompletos')
             }
         } catch (error) {
             console.log('error', error);
+            habilitarBoton('Reintentar')
         }
     };
+
+    const habilitarBoton = (mensaje) => {
+        setButtonText(mensaje);
+        setIsButtonDisabled(false);
+        setTimeout(() => {
+            console.log('Set Time out del form')
+            setIsButtonDisabled(false);
+            setButtonText('Enviar');
+            LimpiarFormulario()
+        }, 5000);
+    }
+
+    const LimpiarFormulario = () => {
+        setFormData({
+            nombre: '',
+            correo: '',
+            numero: '',
+            servicio: '',
+            mensaje: ''
+        });
+    }
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -80,7 +94,7 @@ export default function Contactanos() {
 
             <article className="text-center">
                 <h2 className="text-white flex flex-col font-bold text-4xl md:text-6xl">
-                    Contáctanos
+                    Agendar cotización
                     <span className="text-gray-500 text-lg font-normal md:font-medium pt-2">
                         Llena el formulario y nos pondremos en contacto contigo a la brevedad.
                     </span>
@@ -114,7 +128,6 @@ export default function Contactanos() {
                     <label className="text-white font-medium text-sm">Numero</label>
                     <input
                         type="number"
-                        max="15"
                         className="rounded-md h-8 p-1"
                         name="numero"
                         value={formData.numero}
@@ -152,7 +165,7 @@ export default function Contactanos() {
 
                     <button
                         type="submit"
-                        className={`text-white md:font-semibold border-2 transition-all hover:scale-105 rounded w-full md:w-96 py-1.5 px-4 ${isButtonDisabled ? 'bg-black font-bold' : 'bg-indigo-700 hover:bg-transparent hover:border-white hover:shadow-xl hover:shadow-white'}`}
+                        className={`text-white md:font-semibold border-2 border-indigo-600 transition-all duration-300 hover:scale-105 rounded w-full md:w-96 py-1.5 px-4 ${isButtonDisabled ? 'bg-black font-bold' : 'bg-indigo-700 hover:bg-transparent hover:border-white  hover:shadow-white'}`}
                         disabled={isButtonDisabled}
                     >
                         {buttonText}

@@ -33,7 +33,7 @@ export async function POST(request) {
                 </a>
             </div>
             <div style="flex: 1;">
-                <h1 style="color: #03aa6f; font-size: 72px; margin: 0;"><b>Hi&nbsp;</b>Arnold!</h1>
+                <h1 style="color: #03aa6f; font-size: 72px; margin: 0;">${nombre}</h1>
             </div>
         </div>
 
@@ -92,7 +92,18 @@ export async function POST(request) {
 
             </div>
             `;
+        /* Validación de correo, ver que: nombre, correo, numero, servicio, mensaje */
+        if (nombre == "" || correo == "" || numero == "" || servicio == "" || mensaje == "") {
+            return new Response(JSON.stringify({ message: 'Error en la validación de los datos' }), {
+                status: 500,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
+        if (nombre.length < 20 || correo == "" || numero == "" || servicio == "" || mensaje == "") {
 
+        } else {
+
+        }
         /* Resend */
         const response = await resend.emails.send({
             from: 'NyAsociados <nyasociados@nyasociados.com>',
